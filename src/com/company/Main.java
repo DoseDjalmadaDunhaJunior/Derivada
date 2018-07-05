@@ -9,6 +9,7 @@ public class Main {
 
     public static void main(String[] args) {
 	Derivada oi = new Derivada();
-        System.out.println(oi.raiz("5x^7"));
+        System.out.println(oi.potencia("5x^7"));
+        //oi.umSobre("1/3x^3");
     }
 }

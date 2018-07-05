@@ -6,6 +6,7 @@ public class TrabalhaLetras {
     public void setVet(char[] vet) {
         this.vet = vet;
     }
+
     /** forca a salvar uma String */
     public void setStr(String str) {
         this.str = str;
@@ -32,6 +33,12 @@ public class TrabalhaLetras {
     public void converteInt(char[] txt){
         String aux = new String(txt);
         converteInt(aux);
+    }
+
+    /** converte um int para uma String */
+    public String converteString(int num){
+        String resp = "" + num;
+        return resp;
     }
 
     /** retorna o valor inteiro salvo */
