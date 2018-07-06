@@ -1,5 +1,11 @@
 package com.company;
 
+/**
+ * aqui converte strings, vetores e int`s
+ * @author djalmacunha
+ *
+ */
+
 public class TrabalhaLetras {
 
     /** forca a salvar um vetor char */
@@ -16,11 +22,23 @@ public class TrabalhaLetras {
     public void converteChar(String txt){
         vet = txt.toCharArray();
     }
+    /** converte uma String para um vetor char porem ja retorna */
+    public char[] converteCharRapido(String txt){
+        char[] oi;
+        oi = txt.toCharArray();
+        return oi;
+    }
 
     /** converte um vetor char para uma String */
     public void converteString(char[] txt){
         String aux = new String(txt);
         str = aux;
+    }
+
+    /** converte um vetor char para uma String */
+    public String converteStringRapido(char[] txt){
+        String aux = new String(txt);
+        return aux;
     }
 
     /** converte uma String para int */

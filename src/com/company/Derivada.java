@@ -1,5 +1,10 @@
 package com.company;
 
+/**
+ * aqui é onde fica a logica
+ * @author djalmacunha
+ *
+ */
 public class Derivada extends TrabalhaLetras {
 
     /**
@@ -140,35 +145,59 @@ public class Derivada extends TrabalhaLetras {
     }
 
     /** para descobrir quanto é uma potencia de uma string e multiplica por outro valor
-     * para fazer potencia de potencia (a funcao abaixo ainda possui falhas, porem sera arrumado
-     * depois, motivo falta de tempo)*/
-    public String potenciaNpotencia(String txt, int n){
+     * para fazer potencia de potencia*/
+    public String potenciaNpotencia(String txt, int n) {
         converteChar(txt);
         int pot = potencia(txt), cont = 0;
         pot = pot * n;
         boolean foi = false;
-        for (int i = 0 ; i < txt.length(); i++){
-            if(getVet()[i] == '^'){
+        /** em baixo ele detecta onde tem ^  e descobre quantos digitos tem apos o sinal*/
+        for (int i = 0; i < txt.length(); i++) {
+            if (getVet()[i] == '^') {
                 foi = true;
-            }
-            else if(foi == true){
+            } else if (foi == true) {
                 cont++;
-            }
-            else{
+            } else {
 
             }
         }
-    char [] aux = new char[cont];
-        for (int i = 0 ; i < cont; i++){
-            aux[i] = getVet()[(i+cont)];
+        /** muda o vetor char onde tem que mudar*/
+        char[] aux = new char[cont];
+        for (int i = 0; i < cont; i++) {
+            aux[i] = getVet()[(i + cont)];
 
         }
-
         return converteString(pot);
     }
 
+    public String mudaEmBaixo(String txt){
+        converteChar(txt);
+        /** um vetor para copiar a string*/
+        char[] vet;
+        vet = getVet();
+        /** um vetor para converter a string criada pela potencia */
+        converteChar(potenciaNpotencia(txt,2));
+        char[] pot;
+        pot = converteCharRapido(potenciaNpotencia(txt,2));
+        boolean ok = false;
+        int k = 0;
+        for (int i = 0; i < txt.length(); i++){
+            if (getVet()[i] == '^'){
+                ok = true;
+            }
+            else if(ok == true){
+                vet[i] = pot[k];
+                k++;
+            }
+        }
+        for (int i = 0; i < txt.length(); i++){
+            System.out.print(vet[i]);
+        }
+        return converteStringRapido(vet);
+    }
 
-
+    /** essa funcao ainda possui falhas porem estamos desenvolvendo(por isso ainda nao
+     * esta comentado a logica)*/
     public void umSobre(String txt) {
         converteChar(txt);
         int posicaoDivide = 0, contadorCima = 0, contadorBaixo = 0;
@@ -187,6 +216,7 @@ public class Derivada extends TrabalhaLetras {
         for (int i = 0; i < contadorCima; i++) {
             cima[i] = getVet()[i];
         }
+
             int defist = contadorCima + 1;
         for (int i = 0; i < contadorBaixo; i++) {
             baixo[i] = getVet()[(i+defist)];
@@ -198,7 +228,7 @@ public class Derivada extends TrabalhaLetras {
         String baux = simples(baixo);
         String resposta;
         if (icima == 1) {
-            resposta = baux + "/" + getStr();
+            resposta = baux + "/" + mudaEmBaixo(getStr());
 
         } else {
             resposta = "";
